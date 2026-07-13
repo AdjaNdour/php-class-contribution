@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap');
+
+@theme {
+  /* Couleurs principales */
+  --color-primary: #4F46E5;
+  --color-primary-600: #4338CA;
+  --color-primary-700: #3730A3;
+
+  /* Couleur secondaire */
+  --color-secondary: #E0E3FD;
+  --color-secondary-100: #EEF0FE;
+
+  /* Couleurs utilitaires */
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+
+  /* Texte */
+  --color-text: #111827;
+  --color-text-muted: #6B7280;
+
+  /* Fond */
+  --color-background: #F8FAFC;
+  --color-surface: #FFFFFF;
+
+  /* Polices */
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: Inter, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+.route-divider {
+  height: 2px;
+  background-image: linear-gradient(
+    90deg,
+    var(--color-primary) 0 10px,
+    transparent 10px 20px
+  );
+  background-size: 20px 2px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  transition: background-color .15s ease, color .15s ease;
+}
+
+.nav-link:hover {
+  background: var(--color-white);
+  color: var(--color-primary);
+}
+
+.nav-link.active {
+  background: var(--color-indigo-200);
+  color: var(--color-primary);
+}
