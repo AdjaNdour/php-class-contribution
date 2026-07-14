@@ -8,15 +8,15 @@ function startSession(): void {
 
 function initUtilisateurs(): void {
     startSession();
-    if (!isset($_SESSION["utilisateurs"])) {
+    if (!isset($_SESSION["utilisateurs"]) || empty($_SESSION["utilisateurs"])) {
         $_SESSION["utilisateurs"] = [
             [
                 "id" => 1,
                 "nom" => "Diop",
                 "prenom" => "Kiki",
-                "email" => "kikidiop@gmail.com",
-                "motDePasse" => "kiki",
-                "role" => ["APPRENANT", "GERANT"],
+                "email" => "kiki@gmail.com",
+                "password" => "kiki",
+                "role" => ["GERANT","APPRENANT"],
                 "dateInscription" => "2026-07-01",
                 "estActif" => true,
                 "estAJour" => true
@@ -25,8 +25,8 @@ function initUtilisateurs(): void {
                 "id" => 2,
                 "nom" => "Ndiaye",
                 "prenom" => "Adja",
-                "email" => "adjandiaye@gmail.com",
-                "motDePasse" => "adja",
+                "email" => "adja@gmail.com",
+                "password" => "adja",
                 "role" => ["APPRENANT"],
                 "dateInscription" => "2026-07-03",
                 "estActif" => true,
@@ -36,8 +36,8 @@ function initUtilisateurs(): void {
                 "id" => 3,
                 "nom" => "Sarr",
                 "prenom" => "Fifi",
-                "email" => "fifisarr@gmail.com",
-                "motDePasse" => "fifi",
+                "email" => "fifi@gmail.com",
+                "password" => "fifi",
                 "role" => ["APPRENANT"],
                 "dateInscription" => "2026-07-04",
                 "estActif" => false,
@@ -48,7 +48,7 @@ function initUtilisateurs(): void {
     }
 }
 
-function save(string $key, mixed $data): void {
+function saveData(string $key, mixed $data): void {
     $_SESSION[$key] = $data;
 }
 

@@ -13,7 +13,7 @@ function unique(string $field, string $value, array $datas, array &$errors, stri
         return;
     }
     foreach ($datas as $data) {
-        if (strtolower($data[$field]) === strtolower($value)) {
+        if (isset($data[$field]) && strtolower($data[$field]) === strtolower($value)) {
             $errors[$field] = $message ?: "Cette valeur existe déjà.";
             return;
         }
@@ -42,5 +42,9 @@ function same(string $field, string $value, string $otherValue, array &$errors):
     if ($value !== $otherValue) {
         $errors[$field] = "Les deux champs ne correspondent pas.";
     }
+}
+
+function unicite(string $field, string $value, array $datas, array &$errors, string $message = ""): void {
+    unique($field, $value, $datas, $errors, $message);
 }
 

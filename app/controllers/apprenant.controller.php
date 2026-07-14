@@ -11,10 +11,10 @@ function dashboard() {
         exit;
     }
     $userRoles = is_array($user["role"]) ? $user["role"] : [$user["role"]];
-    if (!in_array("GERANT", $userRoles)) {
+    if (!in_array("APPRENANT", $userRoles)) {
         header("Location: /login");
         exit;
     }
     
-    require_once(dirname(__DIR__) . "/views/gerant/dashboard.html.php");
+    require_once(dirname(__DIR__) . "/views/apprenant/dashboard.html.php");
 }
