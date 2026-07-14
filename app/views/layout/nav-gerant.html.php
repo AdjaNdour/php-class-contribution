@@ -18,7 +18,7 @@
     <div class="px-3 py-3 ml-2 mr-2 rounded-lg flex items-center gap-2 bg-white">
       <div class="w-12 h-12 rounded-full bg-secondary-100 flex items-center justify-center text-primary text-xs font-semibold">G</div>
       <div>
-        <p class="text-[15px] font-medium leading-none text-text"><?php echo htmlspecialchars($_SESSION['user']['role']); ?></p>
+        <p class="text-[15px] font-medium leading-none text-text"><?php echo htmlspecialchars($_SESSION['user']['role'][0]); ?></p>
         <p class="text-[13px] text-text-muted mt-1"><?php echo htmlspecialchars($_SESSION['user']['email']); ?></p>
       </div>
     </div>
