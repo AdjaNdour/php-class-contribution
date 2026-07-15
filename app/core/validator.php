@@ -33,14 +33,14 @@ function isPassword(string $field, string $value, array &$errors): void{
     if ($value === '') {
         return;
     }
-    if (strlen($value) < 5) {
-        $errors[$field] = "Le mot de passe doit contenir au moins 5 caractères.";
+    if (strlen($value) < 4) {
+        $errors[$field] = "Le mot de passe doit contenir au moins 4 caractères.";
     }
 }
 
 function same(string $field, string $value, string $otherValue, array &$errors): void {
     if ($value !== $otherValue) {
-        $errors[$field] = "Les deux champs ne correspondent pas.";
+        $errors[$field] = "Les deux champs password et confirmation ne correspondent pas.";
     }
 }
 

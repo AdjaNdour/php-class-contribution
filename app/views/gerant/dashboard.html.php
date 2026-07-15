@@ -29,14 +29,14 @@
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 6.5c-1-1.3-2.9-2-5-2-3 0-5 1.3-5 3.5S9 11.5 12 12s5 1.3 5 3.5-2 3.5-5 3.5c-2.1 0-4-.7-5-2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <p class="text-[11px] font-semibold tracking-wide text-text-muted">TOTAL COLLECTE</p>
-          <p class="font-display font-semibold text-xl text-text mt-1">125000 Fcfa</p>
+          <p class="font-display font-semibold text-xl text-text mt-1">0 Fcfa</p>
         </div>
         <div class="bg-surface rounded-xl border border-gray-100 p-4">
           <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-3">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke-linecap="round"/><circle cx="17.5" cy="9" r="2.3"/><path d="M15.5 13.2c2.6.3 4.6 2.3 4.9 5" stroke-linecap="round"/></svg>
           </div>
           <p class="text-[11px] font-semibold tracking-wide text-text-muted">TOTAL APPRENANT</p>
-          <p class="font-display font-semibold text-xl text-text mt-1">52</p>
+          <p class="font-display font-semibold text-xl text-text mt-1">5</p>
         </div>
         <div class="bg-surface rounded-xl border border-gray-100 p-4">
           <div class="w-8 h-8 rounded-lg bg-danger/10 flex items-center justify-center text-danger mb-3">

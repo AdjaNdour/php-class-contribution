@@ -40,10 +40,9 @@ function initUtilisateurs(): void {
                 "password" => "fifi",
                 "role" => ["APPRENANT"],
                 "dateInscription" => "2026-07-04",
-                "estActif" => false,
+                "estActif" => true,
                 "estAJour" => false
             ]
-
         ];
     }
 }
@@ -57,5 +56,7 @@ function getData(string $key): mixed {
 }
 
 function destroySession(): void {
+    startSession();
+    session_unset();
     session_destroy();
 }

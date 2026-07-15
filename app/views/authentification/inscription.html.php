@@ -84,14 +84,8 @@
                 </div>
 
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 gap-4">
 
-                    <div>
-                        <label class="block text-xs font-semibold text-text-muted mb-2">
-                            LOGIN
-                        </label>
-                        <input type="text" name="login" placeholder="Votre login" required class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-background text-sm focus:ring-2 focus:ring-primary">
-                    </div>
                     <div>
                         <label class="block text-xs font-semibold text-text-muted mb-2">
                             EMAIL
@@ -109,8 +103,14 @@
                         </label>
                         <input type="password" name="password" placeholder="********" required class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-background text-sm focus:ring-2 focus:ring-primary">
                     </div>
-
                     <div>
+                        <label class="block text-xs font-semibold text-text-muted mb-2">
+                            CONFIRMATION
+                        </label>
+                        <input type="password" name="confirmation" placeholder="********" required class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-background text-sm focus:ring-2 focus:ring-primary">
+                    </div>
+
+                    <!-- <div>
                         <label class="block text-xs font-semibold text-text-muted mb-2">
                             ROLE
                         </label>
@@ -133,7 +133,7 @@
                             </option>
 
                         </select>
-                    </div>
+                    </div> -->
 
                 </div>
 

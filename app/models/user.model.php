@@ -14,8 +14,7 @@ function verifyLogin(string $email, string $password): ?array {
     return null;
 }
 
-function saveUser(array $newUser): array {
-    
+function saveUser(array $newUser): array { 
     $users = getData("utilisateurs");
     $newId = count($users) > 0 ? max(array_column($users, 'id')) + 1 : 1;
     $newUser["id"] = $newId;
