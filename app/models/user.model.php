@@ -1,28 +1,63 @@
 <?php
 
-require_once(dirname(__DIR__) . "/core/session.php");
 
-function verifyLogin(string $email, string $password): ?array {
-    $users = getData("utilisateurs") ?? [];
-    foreach ($users as $user) {
-        $userEmail = $user["email"] ?? '';
-        $userPassword = $user["password"] ?? '';
-        if (strtolower($userEmail) === strtolower($email) && $userPassword === $password) {
+
+function getUserByEmail(string $email): array|null
+{
+    $users= getData(KEY_USER);
+    foreach ($users as  $user) {
+        if($user['isActif'] && $user['email'] === $email ){
+
             return $user;
         }
     }
     return null;
 }
 
-function saveUser(array $newUser): array { 
-    $users = getData("utilisateurs");
-    $newId = count($users) > 0 ? max(array_column($users, 'id')) + 1 : 1;
-    $newUser["id"] = $newId;
-    $users[] = $newUser;
-    saveData("utilisateurs",$users);
-    return $newUser;
+function saveUser(array $newUser):int
+{
+    $maxId = getMaxId();
+    $id = $maxId + 1;
+    $newUser['id']= $id;
+    saveData(KEY_USER,$newUser);
+return 0;
+}
+function getMaxId():int
+{
+    $users= getData(KEY_USER);
+    $maxId = 0;
+    foreach ($users as $key => $user) {
+        if($user['id']>$maxId){
+            $maxId = $user['id'];
+        }
+    
+    } 
+return $maxId;
+
 }
 
-function getUsers(): array {
-    return getData("utilisateurs") ?? [];
+function getAllAprenantsActif():array
+{
+    $apprenantsActif = [];
+    $users= getData(KEY_USER);
+     foreach ($users as  $user) {
+        if($user['isActif'] && in_array('Apprenant',$user['role'])){
+            $apprenantsActif[]= $user;
+        }
+    }
+
+return $apprenantsActif;
+}
+
+function getAllAprenantsRetard():array
+{
+$apprenantsRetard = [];
+    $users= getData(KEY_USER);
+     foreach ($users as  $user) {
+        if($user['isActif'] && !$user['estAJour'] && in_array('Apprenant',$user['role'])){
+            $apprenantsRetard[]= $user;
+        }
+    }
+
+return $apprenantsRetard;
 }

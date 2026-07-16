@@ -1,20 +1,11 @@
 <?php
+require_once dirname(__DIR__)."/core/validator.php";
+require_once dirname(__DIR__)."/models/user.model.php";
 
-require_once(dirname(__DIR__) . "/core/session.php");
+function dashboard (){
+    $headerName = "Tableau de board";
+    $currentPage = "Tableau de board";
+    $role = "Apprenant";
 
-function dashboard() {
-    startSession();
-    $user = getData("user");
-    
-    if (!$user) {
-        header("Location: /login");
-        exit;
-    }
-    $userRoles = is_array($user["role"]) ? $user["role"] : [$user["role"]];
-    if (!in_array("APPRENANT", $userRoles)) {
-        header("Location: /login");
-        exit;
-    }
-    
-    require_once(dirname(__DIR__) . "/views/apprenant/dashboard.html.php");
+    renderView("base.layout", "apprenant/dashboard");
 }

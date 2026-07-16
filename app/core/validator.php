@@ -1,50 +1,31 @@
 <?php
 
-function required(string $field, &$value, array &$errors): void{
-    $value = trim($_POST[$field] ?? '');
-    if ($value === '') {
-        $errors[$field] = "Le champ $field est obligatoire.";
+function required(string $value,string $keyError,array &$errors,string $smsErrors = "Champ obligatoire"):bool{
+    if(empty($value)){
+        $errors[$keyError]= $smsErrors;
+        return false;
+    }
+    return true;
+}
+
+function unique(string $value,string $keyError,array $data,array &$errors,string $smsErrors = "Ce champ doit etre unique"){
+    
+    if(in_array($value,$data)){
+        $errors[$keyError]= $smsErrors;
     }
 }
 
-function unique(string $field, string $value, array $datas, array &$errors, string $message = ""): void {
+function isEmail(string $value,string $keyError,array &$errors,bool $required=true, string $smsErrors = "Cette email doit repecter ce format : fatou@gmail.com"){
+if($required &&!filter_var($value, FILTER_VALIDATE_EMAIL)){
+        $errors[$keyError]= $smsErrors;
+    }
 
-    if ($value === '') {
-        return;
-    }
-    foreach ($datas as $data) {
-        if (isset($data[$field]) && strtolower($data[$field]) === strtolower($value)) {
-            $errors[$field] = $message ?: "Cette valeur existe déjà.";
-            return;
-        }
-    }
 }
 
-function isEmail(string $field, string $value, array &$errors): void{
-    if ($value === '') {
-        return;
+function validPassword(string $value,string $keyError,array &$errors ,bool $required=true,int $min = 4,string $smsErrors = "Ce champ doit contenir au moins 4 caracteres."){
+    
+    if($required && strlen($value) < $min){
+        $errors[$keyError]= $smsErrors;
     }
-    if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-        $errors[$field] = "Adresse email invalide.";
-    }
-}
-
-function isPassword(string $field, string $value, array &$errors): void{
-    if ($value === '') {
-        return;
-    }
-    if (strlen($value) < 4) {
-        $errors[$field] = "Le mot de passe doit contenir au moins 4 caractères.";
-    }
-}
-
-function same(string $field, string $value, string $otherValue, array &$errors): void {
-    if ($value !== $otherValue) {
-        $errors[$field] = "Les deux champs password et confirmation ne correspondent pas.";
-    }
-}
-
-function unicite(string $field, string $value, array $datas, array &$errors, string $message = ""): void {
-    unique($field, $value, $datas, $errors, $message);
 }
 

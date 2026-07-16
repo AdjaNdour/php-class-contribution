@@ -1,24 +1,35 @@
 <?php
 
-require_once(dirname(__DIR__) . "/core/session.php");
+require_once dirname(__DIR__) . "/core/validator.php";
+require_once dirname(__DIR__) . "/models/user.model.php";
 
-function dashboard() {
-    startSession();
-    $user = getData("user");
-    
-    if (!$user) {
-        header("Location: /login");
-        exit;
-    }
-    $userRoles = $user["role"];
-    if (!in_array("GERANT", $userRoles)) {
-        header("Location: /login");
-        exit;
-    }
-    require_once(dirname(__DIR__) . "/views/gerant/dashboard.html.php");
+function dashboard()
+{
+    $headerName = "Tableau de board";
+    $currentPage = "Tableau de board";
+    $role = "Gerant";
+    $apprenantsRetard = getAllAprenantsRetard();
+    renderView("base.layout", "gerant/dashboard", [
+        "apprenantsRetard" => $apprenantsRetard
+    ]);
+
 }
 
-function marquerAbandon(){
+function apprenantActif()
+{
+    $headerName = "Liste des apprenants actifs";
+    $currentPage = "Apprenants actifs";
+    $role = "Gerant";
+
+    $apprenantsActif = getAllAprenantsActif();
+
+    renderView("base.layout", "gerant/listeApprenantsActif", [
+        "apprenantsActif" => $apprenantsActif
+    ]);
+}
+
+function marquerAbandon()
+{
 
     startSession();
     $users = getData("utilisateurs");
@@ -27,7 +38,7 @@ function marquerAbandon(){
         $idApprenant = (int) $_POST["id"];
         foreach ($users as &$user) {
             if ($user["id"] == $idApprenant) {
-                $user["estActif"] = false;
+                $user["isActif"] = false;
                 break;
             }
         }
@@ -37,19 +48,18 @@ function marquerAbandon(){
 
     $apprenants = [];
     foreach ($users as $user) {
-        if($user["estActif"] && in_array("APPRENANT",$user["role"])){
-            $apprenants[]= $user;
+        if ($user["isActif"] && in_array("Apprenant", $user["role"])) {
+            $apprenants[] = $user;
         }
     }
 
     $nbrApprenant = count($apprenants);
-    $nbrApprenantRetard=0;
+    $nbrApprenantRetard = 0;
     foreach ($apprenants as $a) {
         if (!$a["estAJour"]) {
-            $nbrApprenantRetard ++;
+            $nbrApprenantRetard++;
         }
     }
 
-    require_once(dirname(__DIR__) . "/views/gerant/apprenants.html.php");
-
+    require_once(dirname(__DIR__) . "/views/gerant/listeApprenantsActif.html.php");
 }

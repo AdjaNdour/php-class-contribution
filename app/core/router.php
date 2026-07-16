@@ -21,10 +21,15 @@ $route = [
         'controller' => 'gerant',
         'action' => 'marquerAbandon',
     ],
+    '/gerant/apprenantActif' => [
+        'controller' => 'gerant',
+        'action' => 'apprenantActif',
+    ],
     '/apprenant/dashboard' => [
         'controller' => 'apprenant',
         'action' => 'dashboard',
-    ]
+    ],
+    
 ];
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -35,13 +40,13 @@ if ($uri === '') {
 }
 
 startSession();
-                        
+
 $publicRoutes = [
     '/login',
     '/inscription'
 ];
 
-$use = getData("user");
+$use = getData("userConnect");
 if (!in_array($uri, $publicRoutes) && !isset($use)) {
     header("Location: /login");
     exit;
@@ -52,41 +57,18 @@ if (isset($route[$uri])) {
     $controller = $route[$uri]['controller'];
     $action = $route[$uri]['action'];
     $contro = dirname(__DIR__) . "/controllers/$controller.controller.php";
-    if ($contro) {
+    if (file_exists($contro)) {
+        require_once(dirname(__DIR__)."/controllers/controller.php");
         require_once $contro;
-        if ($action) {
+        if (function_exists($action)) {
             $action();
-        }else{
+        } else {
             echo "fonction introuvable";
         }
-    }else{
+    } else {
         echo "controller introuvable";
     }
-}else{
+} else {
     http_response_code(404);
     echo "page introuvable";
 }
-
-// if (isset($route[$uri])) {
-
-//     $controller = $route[$uri]['controller'];
-//     $action = $route[$uri]['action'];
-
-//     $controllerFile = dirname(__DIR__) . "/controllers/$controller.controller.php";
-
-//     if (file_exists($controllerFile)) {
-//         require_once $controllerFile;
-//         if (function_exists($action)) {
-//             $action();
-//         } else {
-//             echo "Action introuvable";
-//         }
-
-//     } else {
-//         echo "Contrôleur introuvable";
-//     }
-
-// } else {
-//     http_response_code(404);
-//     echo "Page introuvable";
-// }

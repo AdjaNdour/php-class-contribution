@@ -1,39 +1,4 @@
- <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-   <div class="bg-surface rounded-xl border border-gray-100 p-4">
-     <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-3">
-       <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-         <circle cx="9" cy="8" r="3" />
-         <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke-linecap="round" />
-         <circle cx="17.5" cy="9" r="2.3" />
-         <path d="M15.5 13.2c2.6.3 4.6 2.3 4.9 5" stroke-linecap="round" />
-       </svg>
-     </div>
-     <p class="text-[11px] font-semibold tracking-wide text-text-muted">TOTAL APPRENANT</p>
-     <p class="font-display font-semibold text-xl text-text mt-1"> 12 </p>
-   </div>
-   <div class="bg-surface rounded-xl border border-gray-100 p-4">
-     <div class="w-8 h-8 rounded-lg bg-danger/10 flex items-center justify-center text-danger mb-3">
-       <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-         <circle cx="12" cy="12" r="9" />
-         <path d="M12 7v5l3.5 2" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-     </div>
-     <p class="text-[11px] font-semibold tracking-wide text-text-muted">RETARD</p>
-     <p class="font-display font-semibold text-xl text-text mt-1"> 20 </p>
-   </div>
-   <div class="bg-surface rounded-xl border border-gray-100 p-4">
-     <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-3">
-       <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-         <rect x="3.5" y="4.5" width="17" height="16" rx="2" />
-         <path d="M3.5 9.5h17M8 3v3M16 3v3" stroke-linecap="round" /> $nbrApprenantRetard;
-       </svg>
-     </div>
-     <p class="text-[11px] font-semibold tracking-wide text-text-muted">SEMAINE COURANTE</p>
-     <p class="font-display font-semibold text-xl text-text mt-1">SMN 14</p>
-   </div>
- </div>
-
- <?php
+    <?php
         $apprenants = $viewData["apprenantsRetard"] ?? [];
     ?>
    <div class="bg-surface rounded-xl border border-gray-100 overflow-x-auto">
